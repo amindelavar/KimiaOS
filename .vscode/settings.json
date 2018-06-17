@@ -1,0 +1,14 @@
+{
+    "files.associations": {
+        "system.h": "c",
+        "string.h": "c",
+        "types.h": "c",
+        "mem.h": "c",
+        "descriptor_tables.h": "c",
+        "timer.h": "c",
+        "isr.h": "c",
+        "debug_display.h": "c",
+        "ports.h": "c"
+    },
+    "C_Cpp.default.includePath": "./include"
+}
