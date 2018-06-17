@@ -3,7 +3,12 @@ KimiaOS
 
 This is a hobby operating system that could Introduction of a real operating system.
 
-
+Properties
+--------
+VERSION         0.4.7
+ARCH            x86
+VERSION_NAME    BETA
+BIRTH_DAY       15.4.2018
 
 Features
 --------
