@@ -21,5 +21,6 @@
 #define PIT_FREQUENCY		1193180
 //----------------------------------------------
 void init_timer(uint32 frequency);
+void timer_wait(uint32 ticks);
 
 #endif /*_TIMER_H*/

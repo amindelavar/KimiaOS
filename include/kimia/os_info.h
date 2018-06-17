@@ -3,7 +3,7 @@
 #ifndef _OS_INFO_H
 #define _OS_INFO_H
 
-#define KERNEL_VERSION		"0.4.4"
+#define KERNEL_VERSION		"0.4.6"
 #define OS_VERSION			"0.1"
 #define OS_VERSION_NAME     "BETA"
 #define OS_NAME				"KIMIA"

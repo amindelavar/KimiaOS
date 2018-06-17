@@ -253,9 +253,7 @@ void irq_install(){
     sti();
     // IRQ0: timer
 	dbg_printf(STR"%sinit Timer\n",preShell);
-	//for(int i=0;i<10;i++){
     init_timer(50);
-	//}
     // IRQ1: keyboard
     init_keyboard();
 	

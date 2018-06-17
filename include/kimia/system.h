@@ -7,13 +7,11 @@
 
 #include "os_info.h"
 #include "arch/x86/types.h"
-//#include "arch/x86/regs.h"
 //----------------------------------
 #include "debug_display.h"
 
 #include "arch/x86/descriptor_tables.h"
 #include "arch/x86/ports.h"
-//#include "arch/x86/isr.h"
 #include "arch/x86/timer.h"
 #include "arch/x86/cpu.h"
 #include "arch/x86/panic.h"
