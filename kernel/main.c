@@ -12,19 +12,17 @@ int kmain(){
 	dbg_printf(STR"%sinit GDT and IDT(ISRs)\n",preShell);
 	dbg_printf(STR"%sConfigure PIC and init IRQs\n",preShell);
 	irq_install();
-	
-	//String io=gets_keyboard();
-	//dbg_printf(STR"GGGG:%s\n",io);
+	//String io=gets_keyboard(true);
+	//uint8 io=getch_keyboard(true);
+	//dbg_printf(STR"GGGG:%c\n",io);
     //__asm__ __volatile__("int $7");
-	//String buf="v ";
+	//String buf="v b";
 	/*append_char(buf,'h');
 	append_char(buf,'i');
 	append_char(buf,'!');*/
-
 	//dbg_printf("FFF:%s\n",buf);
-	 //int a=5/0;
-	//dbg_printf(STR"DDD:%c\n",'r');
-	//------------------------------------
+	//------------------------------------init memory
+	init_memory_management();
 	
 	return 0;
 }

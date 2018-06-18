@@ -6,11 +6,15 @@
 #ifndef _DESCRIPTOR_TABLES_H
 #define _DESCRIPTOR_TABLES_H
 
-#include "types.h"
-
+static uint32 GDT_ADDR,IDT_ADDR,IDT_SIZE;
+//#define IDT_ADDR		0x80000
+//#define GDT_SIZE		(8*GDT_ENTRIES)
+//#define GDT_ADDR		0x80000
+//---------------------------------------
 #define KERNEL_CS		0x08
 #define IDT_ENTRIES		256
-
+#define GDT_ENTRIES		5
+//---------------------------------------
 #define IRQ0 32
 #define IRQ1 33
 #define IRQ2 34
@@ -134,6 +138,8 @@ void init_descriptor_tables();
 void interrupt_handler(registers_t regs);
 void irq_handler(registers_t regs);
 void irq_install();
+void register_interrupt_handler(uint8 n, isr_t handler);
+void remove_interrupt_handler(uint8 n);
 
 #endif /*_DESCRIPTOR_TABLES_H*/
 

@@ -15,9 +15,11 @@
 #include "arch/x86/cpu.h"
 #include "arch/x86/panic.h"
 #endif
-//----------------------------------
+//----------------------------------display
 #include "debug_display.h"
-//----------------------------------
+//----------------------------------memory
+#include "memory/mm.h"
+//----------------------------------lib
 #include "lib/string.h"
 #include "lib/mem.h"
 

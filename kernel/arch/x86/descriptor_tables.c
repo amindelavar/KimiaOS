@@ -4,14 +4,14 @@
 
 
 
-//private functions
+//static functions
 static void init_gdt();
 static void init_idt();
 static void gdt_set_gate(int32 num,uint32 base,uint32 limit,uint8 access,uint8 gran);
 static void idt_set_gate(uint8 num,uint32 base);
 //variables
-isr_t interrupt_handlers[256];
-gdt_entry_t gdt_entries[5];
+isr_t interrupt_handlers[IDT_ENTRIES];
+gdt_entry_t gdt_entries[GDT_ENTRIES];
 gdt_ptr_t gdt_ptr;
 idt_entry_t idt_entries[IDT_ENTRIES];
 idt_ptr_t idt_ptr;
@@ -51,10 +51,10 @@ void init_descriptor_tables(){
 
 /**
  * init_gdt
- * init gdt and return a bool
+ * init gdt
  */
 static void init_gdt(){
-	gdt_ptr.limit=(sizeof(gdt_entry_t)*5)-1;
+	gdt_ptr.limit=(sizeof(gdt_entry_t)*GDT_ENTRIES)-1;
 	gdt_ptr.base=(uint32) &gdt_entries;
 	gdt_set_gate(0,0,0,0,0);				//null segment
 	gdt_set_gate(1,0,0xFFFFFFFF,0x9A,0xCF);	//kernel code segment
@@ -63,6 +63,7 @@ static void init_gdt(){
 	gdt_set_gate(4,0,0xFFFFFFFF,0xF2,0xCF);	//user mode data segment
 	
 	load_gdt((uint32)&gdt_ptr);
+	GDT_ADDR=(uint32)&gdt_ptr;
 }
 /**
  * gdt_set_gate
@@ -162,6 +163,8 @@ static void init_idt(){
 	idt_ptr.limit=(sizeof(idt_entry_t)*IDT_ENTRIES)-1;
 	idt_ptr.base=(uint32) &idt_entries;
 	load_idt((uint32)&idt_ptr);
+	IDT_ADDR=(uint32)&idt_ptr;
+	IDT_SIZE=(uint32)idt_ptr.limit;
 	//memset((String) &idt_entries,0,sizeof(idt_entry_t)*IDT_ENTRIES);
 }
 /**
@@ -200,6 +203,9 @@ void irq_handler(registers_t regs){
     }
 }
 
+void remove_interrupt_handler(uint8 n){
+	interrupt_handlers[n]=0;
+}
 /**
 interrupt_handler
 handles ISR interrupts
@@ -238,7 +244,8 @@ void interrupt_handler(registers_t regs){
 }
 
 /**
-
+register_interrupt_handler
+register an ISR or IRQ interrupt
 */
 void register_interrupt_handler(uint8 n, isr_t handler) {
     interrupt_handlers[n] = handler;
@@ -255,6 +262,6 @@ void irq_install(){
 	dbg_printf(STR"%sinit Timer\n",preShell);
     init_timer(50);
     // IRQ1: keyboard
-    init_keyboard();
+    
 	
 }

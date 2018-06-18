@@ -23,7 +23,7 @@ echo ===================KERNEL compile .asm files===================
 nasm kernel/arch/x86/boot.asm -o obj/boot.o $kimia_nasm_options
 nasm kernel/arch/x86/gdt.asm -o obj/gdt.o $kimia_nasm_options
 nasm kernel/arch/x86/interrupt.asm -o obj/interrupt.o $kimia_nasm_options
-nasm kernel/arch/x86/ports.asm -o obj/ports.o $kimia_nasm_options
+#nasm kernel/arch/x86/ports.asm -o obj/ports.o $kimia_nasm_options
 #------------------------------------
 echo ===================KERNEL compile .c files=====================
 #[#[----------------------------kernel]
@@ -37,10 +37,11 @@ gcc $kimia_gcc_options kernel/arch/x86/timer.c -o obj/timer.o
 gcc $kimia_gcc_options kernel/arch/x86/cpu.c -o obj/cpu.o 
 gcc $kimia_gcc_options kernel/arch/x86/cpu.c -o obj/cpu.o 
 gcc $kimia_gcc_options kernel/arch/x86/panic.c -o obj/panic.o 
+gcc $kimia_gcc_options kernel/arch/x86/ports.c -o obj/ports.o 
+#[----------------------------kernel/memory]
+gcc $kimia_gcc_options kernel/memory/mm.c -o obj/mm.o
 #[----------------------------kernel/lib]
-gcc $kimia_gcc_options kernel/arch/x86/cpu.c -o obj/cpu.o 
 gcc $kimia_gcc_options kernel/lib/string.c -o obj/string.o 
-gcc $kimia_gcc_options kernel/arch/x86/cpu.c -o obj/cpu.o
 gcc $kimia_gcc_options kernel/lib/mem.c -o obj/mem.o
 #[----------------------------drivers/keyboard]
 rm -f obj/keyb/*.o

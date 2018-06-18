@@ -4,7 +4,7 @@
 #define _OS_INFO_H
 
 
-#define KERNEL_VERSION		"0.4.8"
+#define KERNEL_VERSION		"0.5.6"
 #define OS_VERSION			"0.1"
 #define OS_VERSION_NAME     "BETA"
 #define OS_NAME				"KIMIA"
@@ -15,7 +15,7 @@
 //----------------------------------
 #define Arch_x86            1
 
-
+//=-=-=-=-=-=-=-=-=-=-=-=-=BUILD=-=-=-=-=-=-=-=-=-=-=-=-=
 
 #endif /*_OS_INFO_H*/
 

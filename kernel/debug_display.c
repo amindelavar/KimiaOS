@@ -6,9 +6,9 @@ const String preShell=STR" > ";
 String vidmem=(String)0x000b8000;
 uint8 fg_txt=15,bg_txt=0;
 uint8 attrib=15;
-uint16 cur_x=0,cur_y=0;
-uint32 w_con=80,h_con=25;
-uint16 tab_size=8;
+static uint16 cur_x=0,cur_y=0;
+const uint32 w_con=80,h_con=25;
+const uint16 tab_size=8;
 /**
  * dbg_putc
  * get a char to print and return a char as status of print
@@ -24,7 +24,14 @@ Boolean dbg_putc(int8 c){
 	}else if(c==(int8)'\t'||c==0x09){
 		dbg_gotoxy(cur_x+tab_size,cur_y);
 	}else if(c==(int8)'\b'){
-		
+		uint16 tmp1,tmp2;
+		if(cur_x-1<0){tmp1=w_con-1;tmp2=cur_y-1;}
+		else {tmp1=cur_x-1;tmp2=cur_y;}
+		if(cur_y-1<0) return false;
+		dbg_gotoxy(tmp1,tmp2);
+		int16 loc=(tmp2*w_con+tmp1)*2;
+		vidmem[loc]=0;
+		vidmem[loc+1]=attrib;
 	}else{
 		int16 loc=(cur_y*w_con+cur_x)*2;
 		vidmem[loc]=c;
@@ -51,6 +58,7 @@ Boolean dbg_puts(String s){
 	}
 	return true;
 }
+
 /**
  * dbg_gotoxy
  * get x , y and set it as cur_x,cur_y and return bool
@@ -160,7 +168,7 @@ Boolean dbg_printf(String format,...){
 				case 's':
 					str=*argvs++;
 					if(!str)
-						str=STR"(null)";
+						str=STR"[null]";
 					while(*str){
 						dbg_putc(*str++);
 					}

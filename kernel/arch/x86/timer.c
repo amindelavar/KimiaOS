@@ -16,7 +16,7 @@ static void timer_callback(registers_t regs) {
     if(useconds == 100) {
 		useconds = 0;
 		Rseconds++;
-		dbg_printf(STR"Tick: %d,sec:%d\n",tick,Rseconds);
+		//dbg_printf(STR"Tick: %d,sec:%d\n",tick,Rseconds);
 	}
     //dbg_printf(STR"Tick: %d\n",tick);
 }

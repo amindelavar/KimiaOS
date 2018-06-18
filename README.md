@@ -2,10 +2,12 @@ KimiaOS
 ===========
 
 This is a hobby operating system that could Introduction of a real operating system.
+[![license](https://img.shields.io/github/license/Netflix/pollyjs.svg)](http://www.apache.org/licenses/LICENSE-2.0)
+
 
 Properties
 --------
-VERSION         0.4.7
+VERSION         0.5.5
 ARCH            x86
 VERSION_NAME    BETA
 BIRTH_DAY       15.4.2018
@@ -19,35 +21,53 @@ Features
 
 TODO
 --------
+- create own bootloader
+- create boot stage2
+- enter to protected mode
+- enter to 32 bits mode
+- sent multiboot struct to c kernel
+- ---------------------------------------
 - start of kernel in 32 bits mode [OK]
 - enter to kmain function in c [OK]
 - print a char in screen [OK]
-- writting basic ports functions [OK]
-- writting functions for print text in kernel mode [OK]
+- writing basic ports functions [OK]
+- writing functions for print text in kernel mode [OK]
 - init IDT [OK]
 - init GDT [OK]
 - init ISRs [OK]
 - configure PIC [OK]
 - init IRQs [OK]
 - init timer [OK]
-- init keyboard [..]
-- implement paging memory
+- init keyboard [OK]
+- implement paging memory [..]
+- implement kernel heap
 - init memory file system
 - init PCI bus
-- init keyboard
 - init virtual file system(vfs)
-- writing system calls
-- init tasking
+- read a file from hdd
+- init serial console
+- implement FPU(floating point unit)
 - enter to user mode
 - init multi tasking
+- writing system calls
 - test a user program named helloworld.exe
+- init shared memory
 - implement a shell
 - init VGA
+- init mouse
 - init window manager
-#=-=-=-=-=-=-=-=-=-=-=-=-=BUILD=-=-=-=-=-=-=-=-=-=-=-=-=
+- implement login manager
+- write support file system
+- design Desktop
+- writing stdlib for c programs
+- create an graphics editor
+- port gcc c compiler
+- port nasm assembler
+
+
 
 Contributing
 ------------
 
-I'm still learning this. For the moment, please restrict your contributions to fixing possible bugs
-or improving existing documents. I'm not yet ready to accept enhancements.
+please restrict your contributions to fixing possible bugs
+or improving existing documents.s
